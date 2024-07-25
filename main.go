@@ -7,7 +7,7 @@ import (
 )
 
 func chatRoomLogin(w http.ResponseWriter, r *http.Request) {
-	template := template.Must(template.ParseFiles("./chatRoomLogin.html"))
+	template := template.Must(template.ParseFiles("./pages/chatRoomLogin.html"))
 	template.Execute(w, nil)
 }
 
