@@ -7,18 +7,42 @@
     <script src="https://unpkg.com/htmx.org@2.0.1" integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            // $("#user-form").submit((e) => {
+            //     e.preventDefault();
+            //     const username = $("#username-field").val();
+            //     $.ajax({
+            //         method: "POST",
+            //         url: "/login",
+            //         contentType: "application/json",
+            //         data: JSON.stringify({
+            //             username: username
+            //         }),
+            //         success: (result) => {
+            //             if (result.was_successful) {
+            //                 window.location.href = "/homepage"       
+            //             } else {
+            //                 $("#response").text(result.message)
+            //             }
+            //         }
+            //     });
+            // })
+        });
+    </script>
 </head>
 <body>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6 text-center shadow-lg py-3 mt-5 w-50 rounded-3">
                 <h2 class="display-5">Chat System V1.0</h2>
-                <form class="mt-4" hx-post="/add_user" hx-swap="innerHTML" hx-target="#response">
+                <form class="mt-4" id="user-form" action="/login" method="post">
                     <div class="d-block">
                         <label for="username" class="d-block" style="font-size: 1.5rem;">Username</label>
-                        <input type="text" name="username" placeholder="Username" class="p-1 mt-2" style="border: 0px; border-bottom: 1px solid black; outline: none; font-size: 1.2rem;">
+                        <input id="username-field" type="text" name="username" placeholder="Username" class="p-1 mt-2" style="border: 0px; border-bottom: 1px solid black; outline: none; font-size: 1.2rem;">
                     </div>
-                    <p id="response"></p>
+                    <p id="response">{{.Message}}</p>
                     <button type="submit" class="mt-5 btn btn-success" style="font-size: 1.2rem;">Access Chat System</button>
                 </form>
             </div>
